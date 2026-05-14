@@ -39,12 +39,12 @@ const Navbar = () => {
             <Phone className="w-4 h-4" />
             708-515-3656
           </a>
-          <Link
-            to="/login"
+          <a
+            href="https://chicagominamidojo.com/login"
             className="flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-md text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all"
           >
             Members
-          </Link>
+          </a>
         </div>
 
         <button
@@ -76,13 +76,13 @@ const Navbar = () => {
               <Phone className="w-4 h-4" />
               708-515-3656
             </a>
-            <Link
-              to="/login"
+            <a
+              href="https://chicagominamidojo.com/login"
               onClick={() => setOpen(false)}
               className="flex items-center justify-center border border-primary text-primary px-4 py-2 rounded-md text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all"
             >
               Members
-            </Link>
+            </a>
           </div>
         </div>
       )}
