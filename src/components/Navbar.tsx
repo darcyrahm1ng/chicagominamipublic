@@ -6,7 +6,7 @@ import logo from "@/assets/logo.avif";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Classes", href: "#classes" },
-  { label: "Instructor", href: "#instructor" },
+  { label: "Instructors", href: "#instructor" },
   { label: "History", href: "#history" },
   { label: "Events and Calendar", href: "#events-calendar" },
   { label: "Contact", href: "#contact" },
@@ -40,7 +40,7 @@ const Navbar = () => {
             708-515-3656
           </a>
           <a
-            href="https://chicagominamidojo.com/login"
+            href="https://app.chicagominamidojo.com/login"
             className="flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-md text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all"
           >
             Members
@@ -77,7 +77,7 @@ const Navbar = () => {
               708-515-3656
             </a>
             <a
-              href="https://chicagominamidojo.com/login"
+              href="https://app.chicagominamidojo.com/login"
               onClick={() => setOpen(false)}
               className="flex items-center justify-center border border-primary text-primary px-4 py-2 rounded-md text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all"
             >
