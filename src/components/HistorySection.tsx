@@ -1,3 +1,5 @@
+"use client";
+
 import defaultHistoryBg from "@/assets/history-dojo.jpg";
 import defaultShinanImg from "@/assets/shinan-pereira.jpg";
 import { useSiteContent } from "@/hooks/useSiteContent";
@@ -9,6 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { imageSrc } from "@/lib/image";
 
 const defaultFullHistory = `The beginnings of Miyama Ryu Combat Jujutsu stretch back over half a century. In 1942 Antonio Pereira, a young American soldier, was participating in a hand-to-hand demonstration. When ordered to punch one of the instructors in the face, he complied, only to find himself whipped around into a choke hold. Pereira learned as much as he could during World War II and focused on specialized combat methods. He continued to experiment and practice with the techniques, refining them sometimes under life and death situations. After the war, his warrior's quest for additional knowledge took him to many schools in search of martial prowess. In 1950, he began a formal study of judo with the Lefcoker brothers. He then began to research how victims of crime were attacked and devise methods of practical defense.
 
@@ -33,8 +36,8 @@ const defaults = {
 
 const HistorySection = () => {
   const c = useSiteContent("history", defaults);
-  const bgSrc = c.bg_image || defaultHistoryBg;
-  const founderSrc = c.founder_image || defaultShinanImg;
+  const bgSrc = imageSrc(c.bg_image || defaultHistoryBg);
+  const founderSrc = imageSrc(c.founder_image || defaultShinanImg);
   const historyParagraphs = (c.full_history || defaultFullHistory)
     .split("\n")
     .filter((p: string) => p.trim());

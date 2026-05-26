@@ -1,5 +1,8 @@
+"use client";
+
 import defaultInstructorImg from "@/assets/instructor.jpg";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { imageSrc } from "@/lib/image";
 
 const defaults = {
   image: "",
@@ -16,7 +19,7 @@ const defaults = {
 
 const InstructorSection = () => {
   const c = useSiteContent("instructor", defaults);
-  const imgSrc = c.image || defaultInstructorImg;
+  const imgSrc = imageSrc(c.image || defaultInstructorImg);
   const paragraphs = (c.bio || "").split("\n").filter((p: string) => p.trim());
   const stats = c.stats?.length ? c.stats : defaults.stats;
 

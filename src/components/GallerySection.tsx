@@ -1,3 +1,5 @@
+"use client";
+
 import collage1 from "@/assets/collage-1.jpg";
 import collage2 from "@/assets/collage-2.jpeg";
 import collage3 from "@/assets/collage-3.jpeg";
@@ -8,17 +10,18 @@ import collage7 from "@/assets/collage-7.jpg";
 import collage8 from "@/assets/collage-8.jpg";
 import collage9 from "@/assets/collage-9.jpeg";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { imageSrc } from "@/lib/image";
 
 const defaultPhotos = [
-  { url: collage1, alt: "Shihan Diane teaching a young student kick techniques" },
-  { url: collage2, alt: "Large group photo at international jujutsu seminar" },
-  { url: collage3, alt: "Shihan Diane with a student at seminar" },
-  { url: collage9, alt: "Shihan Diane tying a belt for a young student" },
-  { url: collage8, alt: "Diane Wallander training at Northwestern in 1983" },
-  { url: collage5, alt: "Women's jujutsu group photo with certificates" },
-  { url: collage7, alt: "Gasshuku 2011 Kaiden Menkyo group photo" },
-  { url: collage4, alt: "Shihan Diane with fellow practitioner" },
-  { url: collage6, alt: "Black belt practitioners with certificates" },
+  { url: imageSrc(collage1), alt: "Shihan Diane teaching a young student kick techniques" },
+  { url: imageSrc(collage2), alt: "Large group photo at international jujutsu seminar" },
+  { url: imageSrc(collage3), alt: "Shihan Diane with a student at seminar" },
+  { url: imageSrc(collage9), alt: "Shihan Diane tying a belt for a young student" },
+  { url: imageSrc(collage8), alt: "Diane Wallander training at Northwestern in 1983" },
+  { url: imageSrc(collage5), alt: "Women's jujutsu group photo with certificates" },
+  { url: imageSrc(collage7), alt: "Gasshuku 2011 Kaiden Menkyo group photo" },
+  { url: imageSrc(collage4), alt: "Shihan Diane with fellow practitioner" },
+  { url: imageSrc(collage6), alt: "Black belt practitioners with certificates" },
 ];
 
 const defaults = {

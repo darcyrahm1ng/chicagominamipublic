@@ -1,7 +1,10 @@
+"use client";
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/logo.avif";
+import { imageSrc } from "@/lib/image";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -18,8 +21,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Chicago Minami Dojo" className="h-10 w-auto" />
+        <Link href="/" className="flex items-center gap-3">
+          <img src={imageSrc(logo)} alt="Chicago Minami Dojo" className="h-10 w-auto" />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">

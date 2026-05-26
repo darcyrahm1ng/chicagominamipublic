@@ -1,4 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
+import { apiUrl } from "@/lib/api";
 
 const cache: Record<string, any> = {};
 
@@ -13,7 +16,7 @@ export function useSiteContent<T extends Record<string, any>>(
       setData(cache[section]);
       return;
     }
-    fetch(`/api/site-content/${section}`)
+    fetch(apiUrl(`/api/site-content/${section}`))
       .then((r) => r.json())
       .then((json) => {
         if (json && Object.keys(json).length > 0) {

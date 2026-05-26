@@ -1,3 +1,5 @@
+"use client";
+
 import { MapPin, Phone, Clock } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 

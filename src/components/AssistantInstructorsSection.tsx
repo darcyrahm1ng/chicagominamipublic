@@ -1,13 +1,16 @@
+"use client";
+
 import { useState } from "react";
 import monicaPhoto from "@/assets/assistant-monica.png";
 import terryPhoto from "@/assets/assistant-terry.png";
 import maxPhoto from "@/assets/assistant-max.png";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { imageSrc, type ImageSource } from "@/lib/image";
 
 type Assistant = {
   id: string;
   name: string;
-  photo: string;
+  photo: ImageSource;
   bio: string;
 };
 
@@ -55,7 +58,7 @@ const AssistantInstructorsSection = () => {
               >
                 <div className="aspect-[3/4] bg-card overflow-hidden">
                   <img
-                    src={a.photo}
+                    src={imageSrc(a.photo)}
                     alt={a.name}
                     className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-300"
                     loading="lazy"
@@ -80,7 +83,7 @@ const AssistantInstructorsSection = () => {
               <div className="flex flex-col sm:flex-row gap-6 items-start pt-2">
                 <div className="shrink-0 mx-auto sm:mx-0 w-40 rounded-md overflow-hidden border-2 border-primary/20">
                   <img
-                    src={selected.photo}
+                    src={imageSrc(selected.photo)}
                     alt={selected.name}
                     className="w-full h-auto object-cover aspect-[3/4]"
                   />

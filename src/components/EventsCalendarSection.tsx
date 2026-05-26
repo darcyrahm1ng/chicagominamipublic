@@ -1,6 +1,9 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { CalendarDays, MapPin, Clock } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { apiUrl } from "@/lib/api";
 
 type UpcomingEvent = {
   id: number;
@@ -30,7 +33,7 @@ export default function EventsCalendarSection() {
   const [items, setItems] = useState<UpcomingEvent[]>([]);
 
   useEffect(() => {
-    fetch("/api/events/upcoming")
+    fetch(apiUrl("/api/events/upcoming"))
       .then((r) => r.json())
       .then((rows: UpcomingEvent[]) => {
         if (!Array.isArray(rows)) return;

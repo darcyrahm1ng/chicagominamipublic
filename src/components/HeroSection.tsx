@@ -1,5 +1,8 @@
+"use client";
+
 import defaultHeroBg from "@/assets/hero-bg.jpg";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { imageSrc } from "@/lib/image";
 
 const defaults = {
   image: "",
@@ -11,7 +14,7 @@ const defaults = {
 
 const HeroSection = () => {
   const c = useSiteContent("hero", defaults);
-  const bgSrc = c.image || defaultHeroBg;
+  const bgSrc = imageSrc(c.image || defaultHeroBg);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">

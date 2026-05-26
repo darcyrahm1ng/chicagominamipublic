@@ -1,6 +1,9 @@
+"use client";
+
 import defaultClassesImg from "@/assets/classes-jujutsu.jpg";
 import { Baby, Swords, Users } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { imageSrc } from "@/lib/image";
 
 const iconMap: Record<string, any> = {
   "All Ages & Levels": Users,
@@ -57,7 +60,7 @@ const defaults = {
 
 const ClassesSection = () => {
   const c = useSiteContent("classes", defaults);
-  const imgSrc = c.image || defaultClassesImg;
+  const imgSrc = imageSrc(c.image || defaultClassesImg);
   const features = c.features?.length ? c.features : defaultFeatures;
   const stats = c.stats?.length ? c.stats : defaultStats;
   const offers = c.offers?.length ? c.offers : defaultOffers;
