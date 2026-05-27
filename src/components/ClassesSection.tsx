@@ -43,7 +43,10 @@ const defaultSchedule = [
   { day: "Thursday", time: "4:45 – 5:30 PM", className: "Kids Class" },
   { day: "Thursday", time: "6:00 – 7:00 PM", className: "Teens & Adults" },
   { day: "Friday", time: "By Appointment Only", className: "" },
-  { day: "Saturday", time: "By Appointment Only", className: "" },
+  { day: "Saturday", time: "9:00 – 10:00 AM", className: "Tai Chi" },
+  { day: "Saturday", time: "10:30 – 11:00 AM", className: "Little Ninjas" },
+  { day: "Saturday", time: "11:15 – 12 noon", className: "Kids Class" },
+  { day: "Saturday", time: "12:30 – 1:30 PM", className: "Teens & Adults" },
   { day: "Sunday", time: "By Appointment Only", className: "" },
 ];
 
@@ -134,7 +137,7 @@ const ClassesSection = () => {
 
         <div className="max-w-5xl mx-auto mt-12 space-y-8">
           <div className="bg-card border border-border rounded-lg p-6 overflow-x-auto">
-            <h3 className="font-serif text-2xl font-bold text-primary mb-4">Class Schedule</h3>
+            <h3 className="font-serif text-2xl font-bold text-primary mb-4">Summer 2026 Class Schedule</h3>
             <table className="w-full text-sm text-left">
               <thead>
                 <tr className="border-b border-border">
