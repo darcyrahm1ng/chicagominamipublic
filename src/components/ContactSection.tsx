@@ -1,6 +1,7 @@
 "use client";
 
-import { MapPin, Phone, Clock, Facebook, Instagram } from "lucide-react";
+import { MapPin, Phone, Clock } from "lucide-react";
+import SocialLinks from "@/components/SocialLinks";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
 const defaults = {
@@ -10,8 +11,6 @@ const defaults = {
   hours: "Mon–Thu: 3:30–7:00|Fri-Sun: By Appointment",
   map_embed:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.5!2d-87.6834!3d41.5425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e13e5c2a1b1b1%3A0x0!2s1835+Dixie+Hwy%2C+Flossmoor%2C+IL+60422!5e0!3m2!1sen!2sus!4v1700000000000",
-  facebook_url: "https://www.facebook.com/profile.php?id=61578078313350",
-  instagram_url: "https://www.instagram.com/chicagominamidojo_/",
 };
 
 const ContactSection = () => {
@@ -47,26 +46,7 @@ const ContactSection = () => {
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">
             Contact Us
           </h2>
-          <div className="flex justify-center items-center gap-4 mt-6">
-            <a
-              href={c.facebook_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-transparent hover:border-primary/40 hover:scale-105 transition-all"
-            >
-              <Facebook className="w-6 h-6" />
-            </a>
-            <a
-              href={c.instagram_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-transparent hover:border-primary/40 hover:scale-105 transition-all"
-            >
-              <Instagram className="w-6 h-6" />
-            </a>
-          </div>
+          <SocialLinks className="justify-center gap-4 mt-6" />
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">

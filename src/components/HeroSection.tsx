@@ -1,8 +1,10 @@
 "use client";
 
 import defaultHeroBg from "@/assets/hero-bg.jpg";
+import SocialLinks from "@/components/SocialLinks";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { imageSrc } from "@/lib/image";
+import { ChevronDown } from "lucide-react";
 
 const defaults = {
   image: "",
@@ -53,12 +55,18 @@ const HeroSection = () => {
             {c.cta_secondary}
           </a>
         </div>
+        <SocialLinks
+          variant="hero"
+          className="justify-center gap-4 mt-6 animate-fade-up [animation-delay:700ms] opacity-0"
+        />
       </div>
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex items-start justify-center p-1">
-          <div className="w-1.5 h-3 bg-primary rounded-full" />
-        </div>
-      </div>
+      <a
+        href="#classes"
+        aria-label="Scroll down"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-foreground/50 hover:text-primary transition-colors"
+      >
+        <ChevronDown className="w-8 h-8" strokeWidth={2} />
+      </a>
     </section>
   );
 };
