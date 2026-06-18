@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Chicago Minami Dojo | Miyama Ryu Combat Jujutsu",
-    description: "Train with Grandmaster Diane in Flossmoor. $99 trial offer.",
+    description: "Train with Grandmaster Diane in Flossmoor.",
     type: "website",
   },
   twitter: {

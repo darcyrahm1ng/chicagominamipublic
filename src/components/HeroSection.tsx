@@ -9,7 +9,7 @@ import { ChevronDown } from "lucide-react";
 const defaults = {
   image: "",
   subtitle: "Chicago Minami Dojo - Flossmoor IL",
-  headline: "$99 Trial Offer — Train with Grandmaster Diane in Flossmoor",
+  headline: "$135 per month — Ask about our free uniform offer",
   cta_primary: "Join Our Classes",
   cta_secondary: "Call Now",
 };
@@ -32,7 +32,7 @@ const HeroSection = () => {
           {c.subtitle}
         </p>
         <p className="text-2xl mb-10 animate-fade-up [animation-delay:300ms] opacity-0 max-w-xl mx-auto font-serif font-bold md:text-5xl">
-          {c.headline.includes("$99") ? (
+          {c.headline.includes("—") ? (
             <>
               <span className="text-amber-400">{c.headline.split("—")[0]?.trim()}</span>{" "}
               <span className="text-foreground">— {c.headline.split("—").slice(1).join("—").trim()}</span>
