@@ -39,6 +39,22 @@ location / {
 }
 ```
 
+### Event detail deep links (static export)
+
+Event pages are client-fetched from Laravel. Known IDs are prebuilt at deploy time; new events created after deploy still need a shell HTML file for direct URLs.
+
+Serve the shell at `/events/0` for any missing numeric event path (browser URL stays `/events/{id}`; the client reads the id from the path and loads the API):
+
+```nginx
+location ~ ^/events/(?<event_id>[0-9]+)/?$ {
+    try_files $uri $uri/ $uri.html /events/0/index.html /events/0.html =404;
+}
+```
+
+Place this **before** the general `location /` block.
+
+Also ensure Laravel public storage (event flyers) is reachable, typically via the same host or the API origin.
+
 ### API proxy to Laravel
 
 ```nginx
@@ -81,4 +97,6 @@ location = /login {
 
 1. `cat $FORGE_SITE_PATH/.env` — environment variables present
 2. `ls $FORGE_SITE_PATH/out/index.html` — build output exists
-3. Browser Network tab — `/api/site-content/*` and `/api/events/upcoming` return 200 or fall back to defaults
+3. Browser Network tab — `/api/site-content/*`, `/api/events/upcoming`, and `/api/events/{id}` return 200 or fall back gracefully
+4. `/events` lists upcoming events; `/events/{id}` loads detail + signup form
+5. `ls $FORGE_SITE_PATH/out/events/0/index.html` (or `out/events/0.html`) — shell exists for Nginx fallback

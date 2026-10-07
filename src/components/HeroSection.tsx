@@ -9,14 +9,26 @@ import { ChevronDown } from "lucide-react";
 const defaults = {
   image: "",
   subtitle: "Chicago Minami Dojo - Flossmoor IL",
-  headline: "$135 per month — Ask about our free uniform offer",
+  headline: "Free Uniform Offer — $135 per month — First Week Free",
   cta_primary: "Join Our Classes",
   cta_secondary: "Call Now",
 };
 
+function splitHeadline(headline: string) {
+  const parts = headline
+    .split(/\s*[—–-]\s*/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  return {
+    title: parts[0] ?? headline,
+    details: parts.slice(1),
+  };
+}
+
 const HeroSection = () => {
   const c = useSiteContent("hero", defaults);
   const bgSrc = imageSrc(c.image || defaultHeroBg);
+  const { title, details } = splitHeadline(c.headline);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -31,16 +43,21 @@ const HeroSection = () => {
         <p className="text-primary tracking-[0.3em] uppercase text-sm font-medium mb-4 animate-fade-up">
           {c.subtitle}
         </p>
-        <p className="text-2xl mb-10 animate-fade-up [animation-delay:300ms] opacity-0 max-w-xl mx-auto font-serif font-bold md:text-5xl">
-          {c.headline.includes("—") ? (
-            <>
-              <span className="text-amber-400">{c.headline.split("—")[0]?.trim()}</span>{" "}
-              <span className="text-foreground">— {c.headline.split("—").slice(1).join("—").trim()}</span>
-            </>
-          ) : (
-            <span className="text-foreground">{c.headline}</span>
+        <div className="mb-10 animate-fade-up [animation-delay:300ms] opacity-0 max-w-2xl mx-auto">
+          <p className="font-serif font-bold text-4xl md:text-6xl leading-tight tracking-tight text-amber-400">
+            {title}
+          </p>
+          {details.length > 0 && (
+            <p className="mt-5 text-base md:text-xl font-medium tracking-wide text-foreground/90">
+              {details.map((detail, i) => (
+                <span key={detail}>
+                  {i > 0 && <span className="mx-2.5 text-primary/80" aria-hidden>·</span>}
+                  {detail}
+                </span>
+              ))}
+            </p>
           )}
-        </p>
+        </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up [animation-delay:500ms] opacity-0">
           <a
             href="#classes"

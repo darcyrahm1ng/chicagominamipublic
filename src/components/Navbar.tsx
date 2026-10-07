@@ -7,13 +7,16 @@ import logo from "@/assets/logo.avif";
 import { imageSrc } from "@/lib/image";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Classes", href: "#classes" },
-  { label: "Instructors", href: "#instructor" },
-  { label: "History", href: "#history" },
-  { label: "Events and Calendar", href: "#events-calendar" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "Classes", href: "/#classes" },
+  { label: "Instructors", href: "/#instructor" },
+  { label: "History", href: "/#history" },
+  { label: "Events and Calendar", href: "/events" },
+  { label: "Contact", href: "/#contact" },
 ];
+
+const linkClass =
+  "text-sm font-medium text-foreground/70 hover:text-primary transition-colors tracking-wider uppercase";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -27,13 +30,9 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors tracking-wider uppercase"
-            >
+            <Link key={link.href} href={link.href} className={linkClass}>
               {link.label}
-            </a>
+            </Link>
           ))}
           <a
             href="tel:7085153656"
@@ -63,14 +62,14 @@ const Navbar = () => {
         <div className="md:hidden bg-background border-b border-border animate-fade-in">
           <div className="flex flex-col px-4 py-4 gap-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors tracking-wider uppercase"
+                className={linkClass}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <a
               href="tel:7085153656"
