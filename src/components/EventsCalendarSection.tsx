@@ -51,19 +51,6 @@ export default function EventsCalendarSection({ pageMode = false }: Props) {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 rounded-lg border border-border bg-card p-3">
-            <iframe
-              src={c.calendar_embed}
-              style={{ border: 0 }}
-              width="100%"
-              height="600"
-              frameBorder="0"
-              scrolling="no"
-              title="Chicago Minami Dojo Calendar"
-              className="w-full rounded-md dark:invert dark:hue-rotate-180"
-            />
-          </div>
-
           <div className="rounded-lg border border-border bg-card p-6">
             <h2 className="font-serif text-2xl font-semibold mb-4 flex items-center gap-2">
               <CalendarDays className="h-5 w-5 text-primary" />
@@ -106,6 +93,19 @@ export default function EventsCalendarSection({ pageMode = false }: Props) {
                 ))}
               </div>
             )}
+          </div>
+
+          <div className="lg:col-span-2 rounded-lg border border-border bg-card p-3">
+            <iframe
+              src={c.calendar_embed}
+              style={{ border: 0 }}
+              width="100%"
+              height="600"
+              frameBorder="0"
+              scrolling="no"
+              title="Chicago Minami Dojo Calendar"
+              className="w-full rounded-md dark:invert dark:hue-rotate-180"
+            />
           </div>
         </div>
       </div>
