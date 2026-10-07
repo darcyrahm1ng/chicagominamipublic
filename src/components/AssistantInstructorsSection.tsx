@@ -3,6 +3,7 @@
 import { useState } from "react";
 import monicaPhoto from "@/assets/assistant-monica.png";
 import terryPhoto from "@/assets/assistant-terry.png";
+import kennethPhoto from "@/assets/assistant-kenneth.jpg";
 /*import maxPhoto from "@/assets/assistant-max.png";*/
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { imageSrc, type ImageSource } from "@/lib/image";
@@ -26,6 +27,12 @@ const assistants: Assistant[] = [
     name: "Grandmaster Terry Pointer",
     photo: terryPhoto,
     bio: "With over Fifty years of teaching Martial Arts with a strong traditional approach and an openmind for new ideas and concepts for growth. Grandmaster Pointer attempts to help people find themselves, to discover their creativity and their capacity for overall growth through the study of Martial Arts. He believes that there is much growth in each person and sees his purpose as that of nourishing the seed so that his students potential may be reached. He is a US Army Veteran and has a 10th dan in AVM Self-Defense System, 9th Dan in Kempo Ryu Kan Kay Bugei, 8th Dan Shorin Ryu, 7th Dan Shuri Ryu, and a 1st Dan in Moo Duk Kwan.",
+  },
+  {
+    id: "kenneth",
+    name: "Assistant Instructor Kenneth Jackson",
+    photo: kennethPhoto,
+    bio: "Kenneth Jackson is an Assistant Instructor at Chicago Minami Dojo, teaching Miyama Ryu Combat Jujitsu.",
   },
   /*{
     id: "max",
