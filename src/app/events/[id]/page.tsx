@@ -1,11 +1,11 @@
 import EventDetailClient from "@/components/EventDetailClient";
-import { apiUrl } from "@/lib/api";
+import { eventsApiUrl } from "@/lib/events";
 
 export async function generateStaticParams() {
   const params: { id: string }[] = [{ id: "0" }];
 
   try {
-    const res = await fetch(apiUrl("/api/events/upcoming"), {
+    const res = await fetch(eventsApiUrl("/api/events/upcoming"), {
       // Build-time snapshot; runtime still client-fetches the live event.
       cache: "no-store",
     });

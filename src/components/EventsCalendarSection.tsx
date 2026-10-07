@@ -62,6 +62,19 @@ export default function EventsCalendarSection({ pageMode = false }: Props) {
               <div className="space-y-4">
                 {items.map((ev) => (
                   <article key={ev.id} className="rounded-md border border-border p-4">
+                    {ev.flyer_url ? (
+                      <Link
+                        href={`/events/${ev.id}`}
+                        className="block mb-3 overflow-hidden rounded-md border border-border"
+                      >
+                        <img
+                          src={ev.flyer_url}
+                          alt={ev.name?.trim() ? `${ev.name} flyer` : "Event flyer"}
+                          className="w-full h-auto"
+                          loading="lazy"
+                        />
+                      </Link>
+                    ) : null}
                     {ev.name?.trim() ? (
                       <Link
                         href={`/events/${ev.id}`}

@@ -1,4 +1,21 @@
-import { apiUrl } from "@/lib/api";
+const EVENTS_API_ORIGIN = "https://app.chicagominamidojo.com";
+
+/** Event reads and RSVPs live on the app host, not the marketing site. */
+export function eventsApiUrl(path: string): string {
+  const p = path.startsWith("/") ? path : `/${path}`;
+  if (typeof window !== "undefined") {
+    const host = window.location.hostname;
+    const local =
+      host === "localhost" ||
+      host === "127.0.0.1" ||
+      host.startsWith("192.168.") ||
+      host.startsWith("10.");
+    // next dev rewrites this path to the app API so localhost is not blocked by CORS.
+    if (local) return p;
+  }
+  const configured = (process.env.NEXT_PUBLIC_API_BASE_URL ?? "").replace(/\/$/, "");
+  return `${configured || EVENTS_API_ORIGIN}${p}`;
+}
 
 export type DojoEvent = {
   id: number;
@@ -41,14 +58,14 @@ export function formatEventTime(hm: string): string {
 }
 
 export async function fetchUpcomingEvents(): Promise<DojoEvent[]> {
-  const res = await fetch(apiUrl("/api/events/upcoming"));
+  const res = await fetch(eventsApiUrl("/api/events/upcoming"));
   if (!res.ok) throw new Error("Could not load events");
   const rows = (await res.json()) as unknown;
   return Array.isArray(rows) ? (rows as DojoEvent[]) : [];
 }
 
 export async function fetchEvent(id: string | number): Promise<DojoEvent | null> {
-  const res = await fetch(apiUrl(`/api/events/${id}`));
+  const res = await fetch(eventsApiUrl(`/api/events/${id}`));
   if (res.status === 404) return null;
   if (!res.ok) throw new Error("Could not load event");
   return (await res.json()) as DojoEvent;
@@ -58,7 +75,7 @@ export async function submitEventSignup(
   eventId: string | number,
   payload: EventSignupPayload,
 ): Promise<void> {
-  const res = await fetch(apiUrl(`/api/events/${eventId}/signups`), {
+  const res = await fetch(eventsApiUrl(`/api/events/${eventId}/signups`), {
     method: "POST",
     headers: {
       Accept: "application/json",
