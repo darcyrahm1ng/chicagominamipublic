@@ -25,9 +25,11 @@ Forge writes the **Environment** tab values to `.env` before the deploy script r
 
 | Variable | Production value |
 |----------|------------------|
-| `NEXT_PUBLIC_API_BASE_URL` | Leave empty when Nginx proxies `/api` on the same host |
+| `NEXT_PUBLIC_API_BASE_URL` | `https://app.chicagominamidojo.com` |
 
-For local development against production API, copy [`.env.example`](.env.example) to `.env.local` and set `NEXT_PUBLIC_API_BASE_URL=https://chicagominamidojo.com`.
+`/events` then requests `https://app.chicagominamidojo.com/api/events/upcoming`. Event pages request `GET /api/events/{id}` and post RSVPs to `POST /api/events/{id}/signups`. Flyer image URLs are absolute on that same app host.
+
+Copy [`.env.example`](.env.example) to `.env.local` for local development. Keep `NEXT_PUBLIC_API_BASE_URL=https://app.chicagominamidojo.com` unless you are pointing at a local Laravel server.
 
 ## Nginx
 
@@ -53,21 +55,7 @@ location ~ ^/events/(?<event_id>[0-9]+)/?$ {
 
 Place this **before** the general `location /` block.
 
-Also ensure Laravel public storage (event flyers) is reachable, typically via the same host or the API origin.
-
-### API proxy to Laravel
-
-```nginx
-location /api {
-    proxy_pass http://127.0.0.1:8000;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-}
-```
-
-Adjust `proxy_pass` to match how Laravel runs on your server.
+The browser calls the Laravel app directly. This site does not proxy `/api`.
 
 ### Static assets (optional)
 
@@ -97,6 +85,6 @@ location = /login {
 
 1. `cat $FORGE_SITE_PATH/.env` — environment variables present
 2. `ls $FORGE_SITE_PATH/out/index.html` — build output exists
-3. Browser Network tab — `/api/site-content/*`, `/api/events/upcoming`, and `/api/events/{id}` return 200 or fall back gracefully
+3. Browser Network tab — `https://app.chicagominamidojo.com/api/events/upcoming` and `/api/events/{id}` return 200
 4. `/events` lists upcoming events; `/events/{id}` loads detail + signup form
 5. `ls $FORGE_SITE_PATH/out/events/0/index.html` (or `out/events/0.html`) — shell exists for Nginx fallback
