@@ -32,7 +32,7 @@ const assistants: Assistant[] = [
     id: "kenneth",
     name: "Assistant Instructor Kenneth Jackson",
     photo: kennethPhoto,
-    bio: "Kenneth Jackson is an Assistant Instructor at Chicago Minami Dojo, teaching Miyama Ryu Combat Jujitsu.",
+    bio: "Kenneth Jackson is a devoted husband and father of three children, and seven grandchildren. After a successful 34-year career in Corporate banking, he retired and continued his calling in ministry. He currently serves as Bishop and Pastor of All Nations Temple of Deliverance Church for 23 years. He earned a Bachelor of Science degree in Finance from Chicago State University and is the author of two books. He is also an entrepreneur and serves as Regional Financial Director of the PAI Church.\n\nFor nearly two years, Kenneth Jackson has trained in Miyama Jujutsu and is preparing to test for his green belt within the next month.",
   },
   /*{
     id: "max",
@@ -95,9 +95,14 @@ const AssistantInstructorsSection = () => {
                     className="w-full h-auto object-cover aspect-[3/4]"
                   />
                 </div>
-                <p className="text-foreground/80 leading-relaxed text-sm sm:text-base flex-1">
-                  {selected.bio}
-                </p>
+                <div className="text-foreground/80 leading-relaxed text-sm sm:text-base flex-1 space-y-3">
+                  {selected.bio
+                    .split(/\n+/)
+                    .filter((paragraph) => paragraph.trim())
+                    .map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                </div>
               </div>
             </>
           )}
